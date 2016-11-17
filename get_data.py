@@ -14,3 +14,9 @@ with zipfile.ZipFile(response_data) as aoa_zip:
 csv=xlsx2csv.Xlsx2csv(BytesIO(xlsx))
 csv.convert("data/AoA_ratings_Kuperman_et_al_BRM.csv")
 
+
+url="http://concepticon.clld.org/parameters.csv?sEcho=1&iSortingCols=1&iSortCol_0=0&sSortDir_0=asc"
+with urllib.request.urlopen(url) as response, open("data/Parameters.csv", "wb") as out_file:
+    response_data=response.read()
+    out_file.write(response_data)
+
